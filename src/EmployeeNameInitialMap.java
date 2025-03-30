@@ -5,6 +5,6 @@ public class EmployeeNameInitialMap {
     
     public static void main(String[] args) {
         List<Employee> listOfEmployees = Employee.getAllEmployees();
-        listOfEmployees.stream().collect(Collectors.groupingBy(employee -> employee.getName().charAt(0))).forEach((key, value) -> System.out.println(key+ ": "+ value.stream().map(Employee::getName).collect(Collectors.toList())));
+        listOfEmployees.stream().filter(employee -> !employee.getName().trim().equals("")).collect(Collectors.groupingBy(employee -> employee.getName().charAt(0))).forEach((key, value) -> System.out.println(key+ ": "+ value.stream().map(Employee::getName).collect(Collectors.toList())));
     }
 }
